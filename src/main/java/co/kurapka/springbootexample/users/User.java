@@ -3,10 +3,14 @@ package co.kurapka.springbootexample.users;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import co.kurapka.springbootexample.posts.Post;
@@ -14,17 +18,25 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description="All details about the user")
+@Entity
 //@JsonFilter("postsFilter")
 public class User {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
+	
 	@Size(min=2, message="Name should be at least 2 characters length")
 	@ApiModelProperty(notes="Name should be at least 2 characters length")
 	private String name;
+	
 	@Past
 	@ApiModelProperty(notes="Date cannot be in the future")
 	private Date birthDate;
+	
+	@OneToMany(targetEntity=Post.class, fetch=FetchType.EAGER)
 	private List<Post> posts;
+	
 	@JsonIgnore
 	private String password;
 

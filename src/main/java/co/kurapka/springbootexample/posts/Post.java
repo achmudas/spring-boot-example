@@ -1,7 +1,14 @@
 package co.kurapka.springbootexample.posts;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Post {
 	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String text;
 	

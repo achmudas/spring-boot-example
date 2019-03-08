@@ -1,0 +1,15 @@
+insert into post values(1, 'post amazing')
+insert into post values(2, 'post amazing2')
+insert into post values(3, 'post amazing3')
+insert into post values(4, 'post amazing4')
+insert into post values(5, 'post amazing5')
+
+insert into user values(1, sysdate(), 'Jim', 'passw')
+insert into user values(2, sysdate(), 'Josh', 'passw1')
+insert into user values(3, sysdate(), 'Ace', 'passw2')
+
+insert into user_posts values(1, 1)
+insert into user_posts values(1, 2)
+insert into user_posts values(2, 3)
+insert into user_posts values(2, 4)
+insert into user_posts values(2, 5)
